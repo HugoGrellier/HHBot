@@ -5,7 +5,7 @@
           args="--manager=dxl_manager
                 --port pan_tilt_port
                 joint1_controller                       
-                joint2_controller
+                        joint2_controller
                 "
           output="screen"/>
           
@@ -16,7 +16,7 @@
                 --type=meta
                 f_arm_controller
                 joint1_controller
-                joint2_controller
+                        joint2_controller
                 "
           output="screen"/>
 </launch>

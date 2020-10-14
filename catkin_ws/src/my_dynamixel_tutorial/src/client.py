@@ -16,7 +16,6 @@ class Joint:
         def __init__(self, motor_name):
             #arm_name should be b_arm or f_arm
             self.name = motor_name
-            print('/'+self.name+'_controller/follow_joint_trajectory', FollowJointTrajectoryAction)
             self.jta = actionlib.SimpleActionClient('/'+self.name+'/follow_joint_trajectory', FollowJointTrajectoryAction)
 
             rospy.loginfo('Waiting for joint trajectory action')
@@ -27,7 +26,9 @@ class Joint:
         def move_joint(self, angles):
             goal = FollowJointTrajectoryGoal()
             char = self.name[0] #either 'f' or 'b'
-            goal.trajectory.joint_names = ['joint1_controller', 'joint2_controller']
+            # goal.trajectory.joint_names = ['joint_1'+char, 'joint_2'+char]
+            goal.trajectory.joint_names = ['claw_1f', 'claw_2f']
+            # goal.trajectory.joint_names = ['joint1_controller' , 'joint2_controller']
             point = JointTrajectoryPoint()
             point.positions = angles
             point.time_from_start = rospy.Duration(3)
@@ -37,8 +38,9 @@ class Joint:
 
 def main():
             arm = Joint('f_arm_controller')
-            arm.move_joint([0.5,1.5])
-            arm.move_joint([6.28,3.14])
+            arm.move_joint([0,0.0])
+            arm.move_joint([5.5,5.5])
+
 
 
 if __name__ == '__main__':
