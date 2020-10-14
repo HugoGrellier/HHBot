@@ -136,6 +136,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/fs03/share/users/edouard.mallecourt/home/5A/PROTO/repo/sujet_2__hhbot/catkin_ws/build/dynamixel_motor/dynamixel_tutorials/cmake_install.cmake")
   include("/fs03/share/users/edouard.mallecourt/home/5A/PROTO/repo/sujet_2__hhbot/catkin_ws/build/dynamixel_motor/dynamixel_controllers/cmake_install.cmake")
   include("/fs03/share/users/edouard.mallecourt/home/5A/PROTO/repo/sujet_2__hhbot/catkin_ws/build/dynamixel_motor/dynamixel_msgs/cmake_install.cmake")
+  include("/fs03/share/users/edouard.mallecourt/home/5A/PROTO/repo/sujet_2__hhbot/catkin_ws/build/my_dynamixel_tutorial/cmake_install.cmake")
 
 endif()
 
