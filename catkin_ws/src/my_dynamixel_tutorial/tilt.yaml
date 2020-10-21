@@ -1,44 +1,48 @@
 # joints: [   'joint1_controller',
 #             'joint2_controller']
 
+
+
+
+# tilt_controller:
+#     controller:
+#         package: dynamixel_controllers
+#         module: joint_position_controller
+#         type: JointPositionController
+#     joint_name: tilt_joint
+#     joint_speed: 0
+#     motor:
+#         id: 2
+#         init: 512
+#         min: 0
+#         max: 1023
+
 joint1_controller:
     controller:
         package: dynamixel_controllers
-        module: joint_position_controller
-        type: JointPositionController
+        module: joint_torque_controller
+        type: JointTorqueController
     joint_name: claw_1f
-    joint_speed: 1.0
+    joint_speed: 0.0
     motor:
         id: 2
-        init: 24576
+        init: 0
         min: 0
-        max: 49152
+        max: 4095
 
 joint2_controller:
     controller:
         package: dynamixel_controllers
-        module: joint_position_controller
-        type: JointPositionController
+        module: joint_torque_controller
+        type: JointTorqueController
     joint_name: claw_2f
-    joint_speed: 1.0
+    joint_speed: 0.0
     motor:
         id: 3
-        init: 24576
+        init: 0
         min: 0
-        max: 49152
+        max: 4095
 
         
 
 
-# joint2_controller:
-#     controller:
-#         package: dynamixel_controllers
-#         module: joint_torque_controller
-#         type: JointTorqueController
-#     joint_name: traction_1f
-#     joint_speed: 1.0
-#     motor:
-#         id: 3
-#         init: 0
-#         min: 0
-#         max: 2047
