@@ -4,8 +4,8 @@
 joint1_controller:
     controller:
         package: dynamixel_controllers
-        module: joint_position_controller
-        type: JointPositionController
+        module: joint_torque_controller
+        type: JointTorqueController
     joint_name: claw_1f
     joint_speed: 1.0
     motor:
@@ -17,8 +17,8 @@ joint1_controller:
 joint2_controller:
     controller:
         package: dynamixel_controllers
-        module: joint_position_controller
-        type: JointPositionController
+        module: joint_torque_controller
+        type: JointTorqueController
     joint_name: claw_2f
     joint_speed: 1.0
     motor:
