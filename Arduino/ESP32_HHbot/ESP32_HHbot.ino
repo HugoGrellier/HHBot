@@ -15,6 +15,8 @@ The range readings are in units of mm. */
 #include <BLEUtils.h>
 #include <BLEServer.h>
 #include <TFT_eSPI.h>       // Hardware-specific library
+#include <ros.h>
+#include <std_msgs/String.h>
 
 TFT_eSPI tft = TFT_eSPI();  // Invoke custom library
 
@@ -26,6 +28,13 @@ uint8_t txValue = 0;
 
 String value;
 String send_ble = "2";
+
+ros::NodeHandle nh;
+
+std_msgs::String str_msg;
+ros::Publisher chatter("chatter", &str_msg);
+
+char hello[13] = "hello world!";
 
 VL53L0X sensor;
 
@@ -53,7 +62,7 @@ class MyCallbacks: public BLECharacteristicCallbacks {
 };
 
 void setup_TFT_SPI(){
-  tft.init();=
+  tft.init();
 
   tft.fillScreen(TFT_BLACK);
   
@@ -110,7 +119,8 @@ void setup_TOF()
 
 void setup()
 {
-  Serial.begin(115200);
+  nh.initNode();
+  nh.advertise(chatter);
   setup_TFT_SPI();
   setup_TOF();
   setup_BLE();
@@ -134,5 +144,7 @@ void loop()
   }
   delay(500);
   send_ble = (String) range;
-  
+  str_msg.data = hello;
+  chatter.publish( &str_msg );
+  nh.spinOnce();
 }
