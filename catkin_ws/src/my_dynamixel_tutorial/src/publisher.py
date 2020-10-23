@@ -10,6 +10,7 @@ import control_msgs.msg
 from trajectory_msgs.msg import JointTrajectoryPoint
 from control_msgs.msg import JointTrajectoryAction, JointTrajectoryGoal, FollowJointTrajectoryAction, FollowJointTrajectoryGoal
 from dynamixel_msgs.msg import JointState
+import time
 
 class Joint_Controller:
 
@@ -47,10 +48,9 @@ class Joint_Controller:
     
     def turn_watcher(self, count):
         while not rospy.is_shutdown():
-            print(self.turn_counter)
             if self.turn_counter == count:
                 self.speed_controller(0)
-                return
+                break
 
 
     def speed_controller(self,speed):
@@ -65,42 +65,57 @@ class Joint_Controller:
     #             self.speed_controller(0)
 
 def turn_watcher(obj1 , count1, obj2 , count2):
+    flag1 = 0
+    flag2 = 0
     while ((obj1.turn_counter <= count1) and (obj2.turn_counter <= count2)):
         if obj1.turn_counter == count1:
             obj1.speed_controller(0)
+            flag1 = 1
         if obj2.turn_counter == count2:
             obj2.speed_controller(0)
-        if obj1.turn_counter == count1 and obj2.turn_counter == count2:
+            flag1 = 1
+        if flag1 and flag2:
             return
 
 
 def glass_up(glass_controller):
-        glass_controller.speed_controller(-4)
-        glass_controller.turn_watcher(0)
+        glass_controller.speed_controller(-6)
+        glass_controller.turn_watcher(4)
 
 def bottle_up(bottle_controller):
-        bottle_controller.speed_controller(-5)
-        bottle_controller.turn_watcher(1)
+        bottle_controller.speed_controller(-6)
+        bottle_controller.turn_watcher(7)
 
 def glass_down(glass_controller):
-        glass_controller.speed_controller(4)
+        print(glass_controller.turn_counter)
+        glass_controller.speed_controller(6)
         glass_controller.turn_watcher(4)
 
 def bottle_down(bottle_controller):
-        bottle_controller.speed_controller(5)
-        bottle_controller.turn_watcher(8)
-
+        bottle_down.turn_counter = 0
+        bottle_controller.speed_controller(6)
+        bottle_controller.turn_watcher(7)
 
 
 if __name__ == '__main__':
     try:
         glass_controller = Joint_Controller('joint1_controller')
         bottle_controller = Joint_Controller('joint2_controller')
-        glass_controller.speed_controller(2)
-        bottle_controller.speed_controller(2)
-        turn_watcher(glass_controller,2,bottle_controller,2)
-        #glass_down(glass_controller)
-        #bottle_down(bottle_controller)
+        #glass_controller.speed_controller(4)
+        #bottle_controller.speed_controller(4)
+        #turn_watcher(glass_controller,4,bottle_controller,9)
+
+        glass_up(glass_controller)
+        bottle_up(bottle_controller)
+
+        glass_controller.turn_counter = 0
+        bottle_controller.turn_counter = 0
+        time.sleep(5)
+
+        bottle_down(bottle_controller)
+        glass_down(glass_controller)
+        
+        
 
 
         # spin() simply keeps python from exiting until this node is stopped
