@@ -18,29 +18,30 @@ The range readings are in units of mm. */
 #include <ros.h>
 #include <std_msgs/String.h>
 
+
+
 TFT_eSPI tft = TFT_eSPI();  // Invoke custom library
+VL53L0X sensor;
+
 
 BLEServer *pServer = NULL;
 BLECharacteristic * pTxCharacteristic;
 bool deviceConnected = false;
 bool oldDeviceConnected = false;
-uint8_t txValue = 0;
-
-String value;
+String value2;
 String send_ble = "2";
 
-ros::NodeHandle nh;
 
+
+ros::NodeHandle  nh;
 std_msgs::String str_msg;
 ros::Publisher chatter("chatter", &str_msg);
-
-char hello[13] = "hello world!";
-
-VL53L0X sensor;
+char hello[13] = "beer_launch";
 
 
 #define SERVICE_UUID        "4fafc201-1fb5-459e-8fcc-c5c9c331914b"
 #define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"
+
 
 class MyCallbacks: public BLECharacteristicCallbacks {
     void onWrite(BLECharacteristic *pCharacteristic) {
@@ -48,15 +49,18 @@ class MyCallbacks: public BLECharacteristicCallbacks {
       pCharacteristic->setValue(send_ble.c_str());
 
       if (value.length() > 0) {
-        value = "";
+        value2 = "";
         for (int i = 0; i < value.length(); i++){
-          //Serial.print(value[i]);
-          value = value + value[i];
+          
+          value2 = value2 + value[i];
         }
-
-        //Serial.println("*********");
-        //Serial.print("value = ");
-        //Serial.println(value);
+      }
+      
+      if (value2 != ""){
+          tft.println("launch beer");
+          str_msg.data = hello;
+          chatter.publish( &str_msg );
+          delay(500);
       }
     }
 };
@@ -106,7 +110,6 @@ void setup_TOF()
   sensor.setTimeout(500);
   if (!sensor.init())
   {
-    Serial.println("Failed to detect and initialize sensor!");
     while (1) {}
   }
 
@@ -119,32 +122,35 @@ void setup_TOF()
 
 void setup()
 {
+  
   nh.initNode();
   nh.advertise(chatter);
-  setup_TFT_SPI();
+  while (!nh.connected()){
+    nh.spinOnce();
+  }
   setup_TOF();
+  setup_TFT_SPI();
   setup_BLE();
+  tft.setCursor(0, 0, 4);
+  tft.println("                                              ");
 }
 
 
 
 void loop()
 { 
-  tft.setCursor(0, 0, 4);
+  
   int range = sensor.readRangeContinuousMillimeters();
-  tft.println("                                              ");
   tft.setCursor(0, 0, 4);
+  tft.println("    ");
   tft.println(range);
-  if (sensor.timeoutOccurred()) { Serial.print(" TIMEOUT"); }
+  if (sensor.timeoutOccurred()) { tft.println(" TIMEOUT"); }
   tft.println();
-  if (value == "beer_launch"){
-    tft.setCursor(6, 0, 4);
-    tft.println("serving beer");
-    Serial.print("serving beer");
-  }
-  delay(500);
+  
+  
   send_ble = (String) range;
-  str_msg.data = hello;
-  chatter.publish( &str_msg );
+ 
   nh.spinOnce();
+  delay(100);
+  
 }
