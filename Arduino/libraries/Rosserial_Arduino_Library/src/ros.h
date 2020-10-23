@@ -37,7 +37,7 @@
 
 #include "ros/node_handle.h"
 #include "ArduinoHardware.h"
-#include <avr/pgmspace.h>
+#include <pgmspace.h>
 #if defined(ESP8266)
   #include "Esp8266Hardware.h"
 #endif
