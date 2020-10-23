@@ -143,14 +143,14 @@ void loop()
   int range = sensor.readRangeContinuousMillimeters();
   tft.setCursor(0, 0, 4);
   tft.println("    ");
+  range = 120-(range - 70)*170/200;
   tft.println(range);
   if (sensor.timeoutOccurred()) { tft.println(" TIMEOUT"); }
   tft.println();
   
-  
   send_ble = (String) range;
  
   nh.spinOnce();
-  delay(100);
+  delay(500);
   
 }
