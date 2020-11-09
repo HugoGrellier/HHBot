@@ -5,10 +5,18 @@
 
 Comment se faire servir une bière en confinement ?
 
+<figure class="video_container">
+  <iframe src="https://www.youtube.com/embed/enMumwvLAug" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+
+
+<figure class="video_container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0xv8RzL4GvI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
+
 ## Le projet
 La problématique soulevée fut comment remplacer les événements festif présent à CPE Lyon en ses temps troublé.  
 La solution été toute trouvée : un robot qui sert la bière moins mousseuse qu'au HH.  
-
 Projet a était réaliser sur un sprint d'une semaine (environ 24 h de travail) dans le cadre du module de prototypage de CPE Lyon sous la direction de Sébastien Altounian. 
 ### Contraintes 
 Les contraintes étaient l'utilisation des technologies suivantes :
