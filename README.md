@@ -9,7 +9,7 @@ Comment se faire servir une bière en confinement ?
 La problématique soulevée fut comment remplacer les événements festif présent à CPE Lyon en ses temps troublé.  
 La solution été toute trouvée : un robot qui sert la bière moins mousseuse qu'au HH.  
 
-Projet a était réaliser sur un sprint d'une semaine (environ 24 h de traival) dans le cadre du module de prototypage de CPE Lyon sous la direction de Sébastien Altounian. 
+Projet a était réaliser sur un sprint d'une semaine (environ 24 h de travail) dans le cadre du module de prototypage de CPE Lyon sous la direction de Sébastien Altounian. 
 ### Contraintes 
 Les contraintes étaient l'utilisation des technologies suivantes :
 - moteur de prototypage Dynamixel AX-12A
