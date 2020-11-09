@@ -3,13 +3,19 @@
 
 # HHBot
 
-Comment se faire servir une bière en confinement ?
+### Comment se faire servir une bière en confinement ? 
 
 <figure class="video_container">
   <iframe src="https://www.youtube.com/embed/0xv8RzL4GvI" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
 
-[![HHBot video](http://img.youtube.com/vi/0xv8RzL4GvI/0.jpg)](http://www.youtube.com/watch?v=0xv8RzL4GvI "HHBot")
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/MUQfKFzIOeU" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
+
+[![HHBot video](https://yt-embed.herokuapp.com/embed?v=0xv8RzL4GvI)](http://www.youtube.com/watch?v=0xv8RzL4GvI "HHBot")
 
 ## Le projet
 La problématique soulevée fut comment remplacer les événements festif présent à CPE Lyon en ses temps troublé.  
@@ -45,4 +51,6 @@ git submodule update</code></pre>
 12. Attendre un peu
 13. Encore un tout petit peu..
 14. ![Enjoy](http://www.quickmeme.com/img/4a/4a7fd82db548c7023b6201f398ff040397f607d35f843226a0e49d36b6ec1c9f.jpg)
+
+
 
