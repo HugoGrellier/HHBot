@@ -6,13 +6,10 @@
 Comment se faire servir une bière en confinement ?
 
 <figure class="video_container">
-  <iframe src="https://www.youtube.com/embed/enMumwvLAug" frameborder="0" allowfullscreen="true"> </iframe>
+  <iframe src="https://www.youtube.com/embed/0xv8RzL4GvI" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
 
-
-<figure class="video_container">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0xv8RzL4GvI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</figure>
+[![HHBot video](http://img.youtube.com/vi/0xv8RzL4GvI/0.jpg)](http://www.youtube.com/watch?v=0xv8RzL4GvI "HHBot")
 
 ## Le projet
 La problématique soulevée fut comment remplacer les événements festif présent à CPE Lyon en ses temps troublé.  
