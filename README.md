@@ -1,4 +1,4 @@
-![poster of HHBot](https://gitlab.com/patatecherie/HHBot/HHBot__1_.png)
+![poster of HHBot](HHBot__1_.png)
 
 
 
